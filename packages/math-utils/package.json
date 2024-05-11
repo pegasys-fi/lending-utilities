@@ -1,6 +1,6 @@
 {
-  "name": "@aave/math-utils",
-  "version": "1.28.0",
+  "name": "@pollum-io/math-utils",
+  "version": "0.0.1",
   "license": "MIT",
   "description": "",
   "scripts": {
@@ -41,13 +41,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aave/aave-utilities.git"
+    "url": "git+https://github.com/pegasys-fi/lending-utilities.git"
   },
   "author": "",
   "bugs": {
-    "url": "https://github.com/aave/aave-utilities/issues"
+    "url": "https://github.com/pegasys-fi/lending-utilities/issues"
   },
   "sideEffects": false,
-  "homepage": "https://github.com/aave/aave-utilities#readme",
+  "homepage": "https://github.com/pegasys-fi/lending-utilities#readme",
   "gitHead": "47a9a6d1f940185ab1e7f6c2bea61564b2abe47a"
 }

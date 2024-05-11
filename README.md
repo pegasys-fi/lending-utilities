@@ -16,20 +16,20 @@ Aave Protocol, an upgrade to the existing
 
 Aave utilities are available as npm packages:
 
-The [`@aave/math-utils`](https://www.npmjs.com/package/@aave/math-utils) package
+The [`@pollum-io/math-utils`](https://www.npmjs.com/package/@pollum-io/math-utils) package
 contains methods for formatting raw contract data for usage on a frontend
 
 The
-[`@aave/contract-helpers`](https://www.npmjs.com/package/@aave/contract-helpers)
+[`@pollum-io/contract-helpers`](https://www.npmjs.com/package/@pollum-io/contract-helpers)
 package contains methods for generating transactions based on method and
 parameter inputs. Can be used to read and write data on the protocol contracts.
 
 ```sh
 // with npm
-npm install @aave/contract-helpers @aave/math-utils
+npm install @pollum-io/contract-helpers @pollum-io/math-utils
 
 // with yarn
-yarn add @aave/contract-helpers @aave/math-utils
+yarn add @pollum-io/contract-helpers @pollum-io/math-utils
 ```
 
 <br />
@@ -49,59 +49,57 @@ npm install ethers@5
 
 ## Features
 
-1.  [Data Methods](#data-methods)
-    - a. [Setup](#data-methods-setup)
-    - b. [Markets Data](#markets-data)
-    - b. [User Data](#user-data)
-2.  [Transaction Methods](#transaction-methods)
-    - a. [Setup](#transactions-setup)
-    - b. [Submitting Transactions](#submitting-transactions)
-    - c. [Pool V3](#pool-v3)
-      - [supplyBundle](#supplyBundle)
-      - [supply](#supply)
-      - [signERC20Approval](#signERC20Approval)
-      - [supplyWithPermit](#supply-with-permit)
-      - [borrow](<#borrow-(v3)>)
-      - [repay](<#repay-(v3)>)
-      - [repayWithPermit](#repayWithPermit)
-      - [repayWithATokens](#repayWithATokens)
-      - [withdraw](<#withdraw-(v3)>)
-      - [swapBorrowRateMode](<#swapBorrowRateMode-(v3)>)
-      - [setUsageAsCollateral](<#setUsageAsCollateral-(v3)>)
-      - [liquidationCall](<#liquidationCall-(v3)>)
-      - [swapCollateral](<#swapCollateral-(v3)>)
-      - [repayWithCollateral](<#repayWithCollateral-(v3)>)
-      - [setUserEMode](#setUserEMode)
-    - d. [Lending Pool V2](#lending-pool-v2)
-      - [depositBundle](#depositBundle)
-      - [deposit](#deposit)
-      - [borrow](#borrow)
-      - [repay](#repay)
-      - [withdraw](#withdraw)
-      - [swapBorrowRateMode](#swapBorrowRateMode)
-      - [setUsageAsCollateral](#setUsageAsCollateral)
-      - [liquidationCall](#liquidationCall)
-      - [swapCollateral](#swapCollateral)
-      - [repayWithCollateral](#repayWithCollateral)
-    - e. [Staking](#staking)
-      - [stake](#stake)
-      - [redeem](#redeem)
-      - [cooldown](#cooldown)
-      - [claimRewards](#claimRewards)
-    - f. [Governance](#governance)
-      - [create](#create)
-      - [cancel](#cancel)
-      - [queue](#queue)
-      - [execute](#execute)
-      - [submitVote](#submitVote)
-      - [delegate](#delegate)
-      - [delegateByType](#delegateByType)
-    - g. [Credit Delegation](#credit-delegation)
-      - [approveDelegation](#approveDelegation)
-    - h. [New Transaction Methods (experimental)](#new-transaction-methods)
-      - [supplyTxBuilder](#supplyTxBuilder)
-      - [depositTxBuilder](#depositTxBuilder)
-    - i. [Disclaimer]
+- [Data Methods](#data-methods)
+  - [Data Methods Setup](#data-methods-setup)
+  - [Markets Data](#markets-data)
+    - [formatReserves](#formatreserves)
+    - [formatReservesAndIncentives](#formatreservesandincentives)
+  - [User Data](#user-data)
+    - [formatUserSummary](#formatusersummary)
+    - [formatUserSummaryAndIncentives](#formatusersummaryandincentives)
+- [Transaction Methods](#transaction-methods)
+  - [Transactions Setup](#transactions-setup)
+  - [Submitting Transactions](#submitting-transactions)
+  - [Pool V3](#pool-v3)
+    - [supplyBundle](#supplybundle)
+    - [signERC20Approval](#signerc20approval)
+    - [supplyWithPermit](#supplywithpermit)
+    - [borrow (V3)](#borrow-v3)
+    - [repay (V3)](#repay-v3)
+    - [repayWithPermit](#repaywithpermit)
+    - [repayWithATokens](#repaywithatokens)
+    - [withdraw (V3)](#withdraw-v3)
+    - [swapBorrowRateMode (V3)](#swapborrowratemode-v3)
+    - [setUsageAsCollateral (V3)](#setusageascollateral-v3)
+    - [liquidationCall (V3)](#liquidationcall-v3)
+    - [swapCollateral (V3)](#swapcollateral-v3)
+    - [repayWithCollateral (V3)](#repaywithcollateral-v3)
+    - [setUserEMode](#setuseremode)
+  - [Lending Pool V2](#lending-pool-v2)
+    - [depositBundle](#depositbundle)
+    - [borrow](#borrow)
+    - [repay](#repay)
+    - [withdraw](#withdraw)
+    - [swapBorrowRateMode](#swapborrowratemode)
+    - [setUsageAsCollateral](#setusageascollateral)
+    - [liquidationCall](#liquidationcall)
+    - [swapCollateral](#swapcollateral)
+    - [repayWithCollateral](#repaywithcollateral)
+  - [Governance V2](#governance-v2)
+    - [create](#create)
+    - [cancel](#cancel)
+    - [queue](#queue)
+    - [execute](#execute)
+    - [submitVote](#submitvote)
+    - [delegate](#delegate)
+    - [delegateByType](#delegatebytype)
+  - [Faucets](#faucets)
+    - [mint](#mint)
+  - [Credit Delegation](#credit-delegation)
+    - [approveDelegation](#approvedelegation)
+  - [New Transaction Methods](#new-transaction-methods)
+    - [Setup](#setup)
+    - [Samples](#samples)
 
 <br />
 
