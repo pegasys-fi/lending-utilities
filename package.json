@@ -1,8 +1,8 @@
 {
-  "name": "@aave/aave-utilities",
+  "name": "@pollum-io/lending-utilities",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aave/aave-utilities.git"
+    "url": "https://github.com/pegasys-fi/lending-utilities.git"
   },
   "private": true,
   "license": "MIT",
