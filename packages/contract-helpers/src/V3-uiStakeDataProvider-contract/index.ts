@@ -1,9 +1,8 @@
 /* istanbul ignore file */
-import { providers } from 'ethers';
 
+import { UiStakeDataProviderContext } from '../uiStakeDataProvider-contract/index';
 import { Abi as IStakedTokenDataProvider } from './typechain/Abi';
 import { Abi__factory } from './typechain/factories/Abi__factory';
-
 import {
   StakedTokenData,
   GeneralStakeUIDataHumanized,
@@ -26,11 +25,6 @@ export interface UiStakeDataProviderInterfaceV3 {
     oracles: EthAddress[];
   }) => Promise<GetUserStakeUIDataHumanized>;
 }
-
-export type UiStakeDataProviderContext = {
-  uiStakeDataProvider: string;
-  provider: providers.Provider;
-};
 
 export class UiStakeDataProviderV3 implements UiStakeDataProviderInterfaceV3 {
   private readonly _contract: IStakedTokenDataProvider;
