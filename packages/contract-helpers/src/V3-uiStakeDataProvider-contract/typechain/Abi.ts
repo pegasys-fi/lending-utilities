@@ -88,9 +88,9 @@ export declare namespace IStakedTokenDataProvider {
 
 export interface AbiInterface extends utils.Interface {
   functions: {
-    'AAVE_USD_PRICE_FEED()': FunctionFragment;
+    'PSYS_USD_PRICE_FEED()': FunctionFragment;
     'ETH_USD_PRICE_FEED()': FunctionFragment;
-    'STAKED_AAVE()': FunctionFragment;
+    'STAKED_PSYS()': FunctionFragment;
     'getStakedAssetData(address,address)': FunctionFragment;
     'getStakedAssetDataBatch(address[],address[])': FunctionFragment;
     'getStakedUserData(address,address,address)': FunctionFragment;
@@ -99,9 +99,9 @@ export interface AbiInterface extends utils.Interface {
 
   getFunction(
     nameOrSignatureOrTopic:
-      | 'AAVE_USD_PRICE_FEED'
+      | 'PSYS_USD_PRICE_FEED'
       | 'ETH_USD_PRICE_FEED'
-      | 'STAKED_AAVE'
+      | 'STAKED_PSYS'
       | 'getStakedAssetData'
       | 'getStakedAssetDataBatch'
       | 'getStakedUserData'
@@ -109,7 +109,7 @@ export interface AbiInterface extends utils.Interface {
   ): FunctionFragment;
 
   encodeFunctionData(
-    functionFragment: 'AAVE_USD_PRICE_FEED',
+    functionFragment: 'PSYS_USD_PRICE_FEED',
     values?: undefined,
   ): string;
   encodeFunctionData(
@@ -117,7 +117,7 @@ export interface AbiInterface extends utils.Interface {
     values?: undefined,
   ): string;
   encodeFunctionData(
-    functionFragment: 'STAKED_AAVE',
+    functionFragment: 'STAKED_PSYS',
     values?: undefined,
   ): string;
   encodeFunctionData(
@@ -138,7 +138,7 @@ export interface AbiInterface extends utils.Interface {
   ): string;
 
   decodeFunctionResult(
-    functionFragment: 'AAVE_USD_PRICE_FEED',
+    functionFragment: 'PSYS_USD_PRICE_FEED',
     data: BytesLike,
   ): Result;
   decodeFunctionResult(
@@ -146,7 +146,7 @@ export interface AbiInterface extends utils.Interface {
     data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: 'STAKED_AAVE',
+    functionFragment: 'STAKED_PSYS',
     data: BytesLike,
   ): Result;
   decodeFunctionResult(
@@ -196,11 +196,11 @@ export interface Abi extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    AAVE_USD_PRICE_FEED(overrides?: CallOverrides): Promise<[string]>;
+    PSYS_USD_PRICE_FEED(overrides?: CallOverrides): Promise<[string]>;
 
     ETH_USD_PRICE_FEED(overrides?: CallOverrides): Promise<[string]>;
 
-    STAKED_AAVE(overrides?: CallOverrides): Promise<[string]>;
+    STAKED_PSYS(overrides?: CallOverrides): Promise<[string]>;
 
     getStakedAssetData(
       stakedAsset: string,
@@ -241,11 +241,11 @@ export interface Abi extends BaseContract {
     >;
   };
 
-  AAVE_USD_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
+  PSYS_USD_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
 
   ETH_USD_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
 
-  STAKED_AAVE(overrides?: CallOverrides): Promise<string>;
+  STAKED_PSYS(overrides?: CallOverrides): Promise<string>;
 
   getStakedAssetData(
     stakedAsset: string,
@@ -286,11 +286,11 @@ export interface Abi extends BaseContract {
   >;
 
   callStatic: {
-    AAVE_USD_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
+    PSYS_USD_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
 
     ETH_USD_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
 
-    STAKED_AAVE(overrides?: CallOverrides): Promise<string>;
+    STAKED_PSYS(overrides?: CallOverrides): Promise<string>;
 
     getStakedAssetData(
       stakedAsset: string,
@@ -334,11 +334,11 @@ export interface Abi extends BaseContract {
   filters: {};
 
   estimateGas: {
-    AAVE_USD_PRICE_FEED(overrides?: CallOverrides): Promise<BigNumber>;
+    PSYS_USD_PRICE_FEED(overrides?: CallOverrides): Promise<BigNumber>;
 
     ETH_USD_PRICE_FEED(overrides?: CallOverrides): Promise<BigNumber>;
 
-    STAKED_AAVE(overrides?: CallOverrides): Promise<BigNumber>;
+    STAKED_PSYS(overrides?: CallOverrides): Promise<BigNumber>;
 
     getStakedAssetData(
       stakedAsset: string,
@@ -368,7 +368,7 @@ export interface Abi extends BaseContract {
   };
 
   populateTransaction: {
-    AAVE_USD_PRICE_FEED(
+    PSYS_USD_PRICE_FEED(
       overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
@@ -376,7 +376,7 @@ export interface Abi extends BaseContract {
       overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
-    STAKED_AAVE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    STAKED_PSYS(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getStakedAssetData(
       stakedAsset: string,

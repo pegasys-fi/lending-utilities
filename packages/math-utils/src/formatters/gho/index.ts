@@ -12,8 +12,8 @@ export interface GhoReserveData {
   ghoMinDebtTokenBalanceForDiscount: string;
   ghoMinDiscountTokenBalanceForDiscount: string;
   ghoCurrentBorrowIndex: string;
-  aaveFacilitatorBucketLevel: string;
-  aaveFacilitatorBucketMaxCapacity: string;
+  pegasysFacilitatorBucketLevel: string;
+  pegasysFacilitatorBucketMaxCapacity: string;
 }
 
 export interface GhoUserData {
@@ -24,10 +24,10 @@ export interface GhoUserData {
 }
 
 export interface FormattedGhoReserveData {
-  aaveFacilitatorRemainingCapacity: number;
-  aaveFacilitatorMintedPercent: number;
-  aaveFacilitatorBucketLevel: number;
-  aaveFacilitatorBucketMaxCapacity: number;
+  pegasysFacilitatorRemainingCapacity: number;
+  pegasysFacilitatorMintedPercent: number;
+  pegasysFacilitatorBucketLevel: number;
+  pegasysFacilitatorBucketMaxCapacity: number;
   ghoBorrowAPYWithMaxDiscount: number;
   ghoBaseVariableBorrowRate: number;
   ghoVariableBorrowAPY: number;
@@ -54,10 +54,10 @@ export function formatGhoReserveData({
     normalize(ghoReserveData.ghoDiscountedPerToken, 18),
   );
   const formattedFacilitatorBucketLevel = Number(
-    normalize(ghoReserveData.aaveFacilitatorBucketLevel, 18),
+    normalize(ghoReserveData.pegasysFacilitatorBucketLevel, 18),
   );
   const formattedFacilitatorBucketMaxCapacity = Number(
-    normalize(ghoReserveData.aaveFacilitatorBucketMaxCapacity, 18),
+    normalize(ghoReserveData.pegasysFacilitatorBucketMaxCapacity, 18),
   );
   const formattedVariableBorrowAPY = calculateCompoundedRate({
     rate: ghoReserveData.ghoBaseVariableBorrowRate,
@@ -74,8 +74,8 @@ export function formatGhoReserveData({
     ),
     ghoDiscountedPerToken: formattedGhoDiscountedPerToken,
     ghoDiscountRate: formattedGhoDiscountRate,
-    aaveFacilitatorBucketLevel: formattedFacilitatorBucketLevel,
-    aaveFacilitatorBucketMaxCapacity: formattedFacilitatorBucketMaxCapacity,
+    pegasysFacilitatorBucketLevel: formattedFacilitatorBucketLevel,
+    pegasysFacilitatorBucketMaxCapacity: formattedFacilitatorBucketMaxCapacity,
     ghoMinDebtTokenBalanceForDiscount: Number(
       normalize(ghoReserveData.ghoMinDebtTokenBalanceForDiscount, 18),
     ),
@@ -83,9 +83,9 @@ export function formatGhoReserveData({
       normalize(ghoReserveData.ghoMinDiscountTokenBalanceForDiscount, 18),
     ),
     ghoVariableBorrowAPY: formattedVariableBorrowAPY,
-    aaveFacilitatorRemainingCapacity:
+    pegasysFacilitatorRemainingCapacity:
       formattedFacilitatorBucketMaxCapacity - formattedFacilitatorBucketLevel,
-    aaveFacilitatorMintedPercent:
+    pegasysFacilitatorMintedPercent:
       formattedFacilitatorBucketMaxCapacity === 0
         ? 0
         : formattedFacilitatorBucketLevel /

@@ -19,24 +19,24 @@ import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 
 interface StakedTokenDataProviderInterface extends ethers.utils.Interface {
   functions: {
-    "AAVE()": FunctionFragment;
-    "AAVE_PRICE_FEED()": FunctionFragment;
+    "PSYS()": FunctionFragment;
+    "PSYS_PRICE_FEED()": FunctionFragment;
     "BPT()": FunctionFragment;
     "BPT_PRICE_FEED()": FunctionFragment;
     "ETH_USD_PRICE_FEED()": FunctionFragment;
-    "STAKED_AAVE()": FunctionFragment;
+    "STAKED_PSYS()": FunctionFragment;
     "STAKED_BPT()": FunctionFragment;
     "getAllStakedTokenData()": FunctionFragment;
     "getAllStakedTokenUserData(address)": FunctionFragment;
-    "getStkAaveData()": FunctionFragment;
-    "getStkAaveUserData(address)": FunctionFragment;
-    "getStkBptAaveUserData(address)": FunctionFragment;
+    "getStkPegasysData()": FunctionFragment;
+    "getStkPegasysUserData(address)": FunctionFragment;
+    "getStkBptPegasysUserData(address)": FunctionFragment;
     "getStkBptData()": FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: "AAVE", values?: undefined): string;
+  encodeFunctionData(functionFragment: "PSYS", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "AAVE_PRICE_FEED",
+    functionFragment: "PSYS_PRICE_FEED",
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "BPT", values?: undefined): string;
@@ -49,7 +49,7 @@ interface StakedTokenDataProviderInterface extends ethers.utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "STAKED_AAVE",
+    functionFragment: "STAKED_PSYS",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -65,15 +65,15 @@ interface StakedTokenDataProviderInterface extends ethers.utils.Interface {
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getStkAaveData",
+    functionFragment: "getStkPegasysData",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "getStkAaveUserData",
+    functionFragment: "getStkPegasysUserData",
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getStkBptAaveUserData",
+    functionFragment: "getStkBptPegasysUserData",
     values: [string]
   ): string;
   encodeFunctionData(
@@ -81,9 +81,9 @@ interface StakedTokenDataProviderInterface extends ethers.utils.Interface {
     values?: undefined
   ): string;
 
-  decodeFunctionResult(functionFragment: "AAVE", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "PSYS", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "AAVE_PRICE_FEED",
+    functionFragment: "PSYS_PRICE_FEED",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "BPT", data: BytesLike): Result;
@@ -96,7 +96,7 @@ interface StakedTokenDataProviderInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "STAKED_AAVE",
+    functionFragment: "STAKED_PSYS",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "STAKED_BPT", data: BytesLike): Result;
@@ -109,15 +109,15 @@ interface StakedTokenDataProviderInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getStkAaveData",
+    functionFragment: "getStkPegasysData",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getStkAaveUserData",
+    functionFragment: "getStkPegasysUserData",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getStkBptAaveUserData",
+    functionFragment: "getStkBptPegasysUserData",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -172,13 +172,13 @@ export class StakedTokenDataProvider extends Contract {
   interface: StakedTokenDataProviderInterface;
 
   functions: {
-    AAVE(overrides?: CallOverrides): Promise<[string]>;
+    PSYS(overrides?: CallOverrides): Promise<[string]>;
 
-    "AAVE()"(overrides?: CallOverrides): Promise<[string]>;
+    "PSYS()"(overrides?: CallOverrides): Promise<[string]>;
 
-    AAVE_PRICE_FEED(overrides?: CallOverrides): Promise<[string]>;
+    PSYS_PRICE_FEED(overrides?: CallOverrides): Promise<[string]>;
 
-    "AAVE_PRICE_FEED()"(overrides?: CallOverrides): Promise<[string]>;
+    "PSYS_PRICE_FEED()"(overrides?: CallOverrides): Promise<[string]>;
 
     BPT(overrides?: CallOverrides): Promise<[string]>;
 
@@ -192,9 +192,9 @@ export class StakedTokenDataProvider extends Contract {
 
     "ETH_USD_PRICE_FEED()"(overrides?: CallOverrides): Promise<[string]>;
 
-    STAKED_AAVE(overrides?: CallOverrides): Promise<[string]>;
+    STAKED_PSYS(overrides?: CallOverrides): Promise<[string]>;
 
-    "STAKED_AAVE()"(overrides?: CallOverrides): Promise<[string]>;
+    "STAKED_PSYS()"(overrides?: CallOverrides): Promise<[string]>;
 
     STAKED_BPT(overrides?: CallOverrides): Promise<[string]>;
 
@@ -248,7 +248,7 @@ export class StakedTokenDataProvider extends Contract {
         },
         BigNumber
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -342,7 +342,7 @@ export class StakedTokenDataProvider extends Contract {
         },
         BigNumber
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -453,7 +453,7 @@ export class StakedTokenDataProvider extends Contract {
         },
         BigNumber
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -474,7 +474,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionPerSecond: BigNumber;
           distributionEnd: BigNumber;
         };
-        stkAaveUserData: [
+        stkPegasysUserData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -594,7 +594,7 @@ export class StakedTokenDataProvider extends Contract {
         },
         BigNumber
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -615,7 +615,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionPerSecond: BigNumber;
           distributionEnd: BigNumber;
         };
-        stkAaveUserData: [
+        stkPegasysUserData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -670,7 +670,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    getStkAaveData(
+    getStkPegasysData(
       overrides?: CallOverrides
     ): Promise<
       [
@@ -696,7 +696,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionEnd: BigNumber;
         }
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -720,7 +720,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    "getStkAaveData()"(
+    "getStkPegasysData()"(
       overrides?: CallOverrides
     ): Promise<
       [
@@ -746,7 +746,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionEnd: BigNumber;
         }
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -770,7 +770,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    getStkAaveUserData(
+    getStkPegasysUserData(
       user: string,
       overrides?: CallOverrides
     ): Promise<
@@ -805,7 +805,7 @@ export class StakedTokenDataProvider extends Contract {
           userCooldownAmount: BigNumber;
         }
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -826,7 +826,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionPerSecond: BigNumber;
           distributionEnd: BigNumber;
         };
-        stkAaveUserData: [
+        stkPegasysUserData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -844,7 +844,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    "getStkAaveUserData(address)"(
+    "getStkPegasysUserData(address)"(
       user: string,
       overrides?: CallOverrides
     ): Promise<
@@ -879,7 +879,7 @@ export class StakedTokenDataProvider extends Contract {
           userCooldownAmount: BigNumber;
         }
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -900,7 +900,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionPerSecond: BigNumber;
           distributionEnd: BigNumber;
         };
-        stkAaveUserData: [
+        stkPegasysUserData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -918,7 +918,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    getStkBptAaveUserData(
+    getStkBptPegasysUserData(
       user: string,
       overrides?: CallOverrides
     ): Promise<
@@ -992,7 +992,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    "getStkBptAaveUserData(address)"(
+    "getStkBptPegasysUserData(address)"(
       user: string,
       overrides?: CallOverrides
     ): Promise<
@@ -1167,13 +1167,13 @@ export class StakedTokenDataProvider extends Contract {
     >;
   };
 
-  AAVE(overrides?: CallOverrides): Promise<string>;
+  PSYS(overrides?: CallOverrides): Promise<string>;
 
-  "AAVE()"(overrides?: CallOverrides): Promise<string>;
+  "PSYS()"(overrides?: CallOverrides): Promise<string>;
 
-  AAVE_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
+  PSYS_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
 
-  "AAVE_PRICE_FEED()"(overrides?: CallOverrides): Promise<string>;
+  "PSYS_PRICE_FEED()"(overrides?: CallOverrides): Promise<string>;
 
   BPT(overrides?: CallOverrides): Promise<string>;
 
@@ -1187,9 +1187,9 @@ export class StakedTokenDataProvider extends Contract {
 
   "ETH_USD_PRICE_FEED()"(overrides?: CallOverrides): Promise<string>;
 
-  STAKED_AAVE(overrides?: CallOverrides): Promise<string>;
+  STAKED_PSYS(overrides?: CallOverrides): Promise<string>;
 
-  "STAKED_AAVE()"(overrides?: CallOverrides): Promise<string>;
+  "STAKED_PSYS()"(overrides?: CallOverrides): Promise<string>;
 
   STAKED_BPT(overrides?: CallOverrides): Promise<string>;
 
@@ -1243,7 +1243,7 @@ export class StakedTokenDataProvider extends Contract {
       },
       BigNumber
     ] & {
-      stkAaveData: [
+      stkPegasysData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1337,7 +1337,7 @@ export class StakedTokenDataProvider extends Contract {
       },
       BigNumber
     ] & {
-      stkAaveData: [
+      stkPegasysData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1448,7 +1448,7 @@ export class StakedTokenDataProvider extends Contract {
       },
       BigNumber
     ] & {
-      stkAaveData: [
+      stkPegasysData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1469,7 +1469,7 @@ export class StakedTokenDataProvider extends Contract {
         distributionPerSecond: BigNumber;
         distributionEnd: BigNumber;
       };
-      stkAaveUserData: [
+      stkPegasysUserData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1589,7 +1589,7 @@ export class StakedTokenDataProvider extends Contract {
       },
       BigNumber
     ] & {
-      stkAaveData: [
+      stkPegasysData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1610,7 +1610,7 @@ export class StakedTokenDataProvider extends Contract {
         distributionPerSecond: BigNumber;
         distributionEnd: BigNumber;
       };
-      stkAaveUserData: [
+      stkPegasysUserData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1665,7 +1665,7 @@ export class StakedTokenDataProvider extends Contract {
     }
   >;
 
-  getStkAaveData(
+  getStkPegasysData(
     overrides?: CallOverrides
   ): Promise<
     [
@@ -1691,7 +1691,7 @@ export class StakedTokenDataProvider extends Contract {
     }
   >;
 
-  "getStkAaveData()"(
+  "getStkPegasysData()"(
     overrides?: CallOverrides
   ): Promise<
     [
@@ -1717,7 +1717,7 @@ export class StakedTokenDataProvider extends Contract {
     }
   >;
 
-  getStkAaveUserData(
+  getStkPegasysUserData(
     user: string,
     overrides?: CallOverrides
   ): Promise<
@@ -1752,7 +1752,7 @@ export class StakedTokenDataProvider extends Contract {
         userCooldownAmount: BigNumber;
       }
     ] & {
-      stkAaveData: [
+      stkPegasysData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1773,7 +1773,7 @@ export class StakedTokenDataProvider extends Contract {
         distributionPerSecond: BigNumber;
         distributionEnd: BigNumber;
       };
-      stkAaveUserData: [
+      stkPegasysUserData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1791,7 +1791,7 @@ export class StakedTokenDataProvider extends Contract {
     }
   >;
 
-  "getStkAaveUserData(address)"(
+  "getStkPegasysUserData(address)"(
     user: string,
     overrides?: CallOverrides
   ): Promise<
@@ -1826,7 +1826,7 @@ export class StakedTokenDataProvider extends Contract {
         userCooldownAmount: BigNumber;
       }
     ] & {
-      stkAaveData: [
+      stkPegasysData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1847,7 +1847,7 @@ export class StakedTokenDataProvider extends Contract {
         distributionPerSecond: BigNumber;
         distributionEnd: BigNumber;
       };
-      stkAaveUserData: [
+      stkPegasysUserData: [
         BigNumber,
         BigNumber,
         BigNumber,
@@ -1865,7 +1865,7 @@ export class StakedTokenDataProvider extends Contract {
     }
   >;
 
-  getStkBptAaveUserData(
+  getStkBptPegasysUserData(
     user: string,
     overrides?: CallOverrides
   ): Promise<
@@ -1939,7 +1939,7 @@ export class StakedTokenDataProvider extends Contract {
     }
   >;
 
-  "getStkBptAaveUserData(address)"(
+  "getStkBptPegasysUserData(address)"(
     user: string,
     overrides?: CallOverrides
   ): Promise<
@@ -2066,13 +2066,13 @@ export class StakedTokenDataProvider extends Contract {
   >;
 
   callStatic: {
-    AAVE(overrides?: CallOverrides): Promise<string>;
+    PSYS(overrides?: CallOverrides): Promise<string>;
 
-    "AAVE()"(overrides?: CallOverrides): Promise<string>;
+    "PSYS()"(overrides?: CallOverrides): Promise<string>;
 
-    AAVE_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
+    PSYS_PRICE_FEED(overrides?: CallOverrides): Promise<string>;
 
-    "AAVE_PRICE_FEED()"(overrides?: CallOverrides): Promise<string>;
+    "PSYS_PRICE_FEED()"(overrides?: CallOverrides): Promise<string>;
 
     BPT(overrides?: CallOverrides): Promise<string>;
 
@@ -2086,9 +2086,9 @@ export class StakedTokenDataProvider extends Contract {
 
     "ETH_USD_PRICE_FEED()"(overrides?: CallOverrides): Promise<string>;
 
-    STAKED_AAVE(overrides?: CallOverrides): Promise<string>;
+    STAKED_PSYS(overrides?: CallOverrides): Promise<string>;
 
-    "STAKED_AAVE()"(overrides?: CallOverrides): Promise<string>;
+    "STAKED_PSYS()"(overrides?: CallOverrides): Promise<string>;
 
     STAKED_BPT(overrides?: CallOverrides): Promise<string>;
 
@@ -2142,7 +2142,7 @@ export class StakedTokenDataProvider extends Contract {
         },
         BigNumber
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2236,7 +2236,7 @@ export class StakedTokenDataProvider extends Contract {
         },
         BigNumber
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2347,7 +2347,7 @@ export class StakedTokenDataProvider extends Contract {
         },
         BigNumber
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2368,7 +2368,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionPerSecond: BigNumber;
           distributionEnd: BigNumber;
         };
-        stkAaveUserData: [
+        stkPegasysUserData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2488,7 +2488,7 @@ export class StakedTokenDataProvider extends Contract {
         },
         BigNumber
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2509,7 +2509,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionPerSecond: BigNumber;
           distributionEnd: BigNumber;
         };
-        stkAaveUserData: [
+        stkPegasysUserData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2564,7 +2564,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    getStkAaveData(
+    getStkPegasysData(
       overrides?: CallOverrides
     ): Promise<
       [
@@ -2590,7 +2590,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    "getStkAaveData()"(
+    "getStkPegasysData()"(
       overrides?: CallOverrides
     ): Promise<
       [
@@ -2616,7 +2616,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    getStkAaveUserData(
+    getStkPegasysUserData(
       user: string,
       overrides?: CallOverrides
     ): Promise<
@@ -2651,7 +2651,7 @@ export class StakedTokenDataProvider extends Contract {
           userCooldownAmount: BigNumber;
         }
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2672,7 +2672,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionPerSecond: BigNumber;
           distributionEnd: BigNumber;
         };
-        stkAaveUserData: [
+        stkPegasysUserData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2690,7 +2690,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    "getStkAaveUserData(address)"(
+    "getStkPegasysUserData(address)"(
       user: string,
       overrides?: CallOverrides
     ): Promise<
@@ -2725,7 +2725,7 @@ export class StakedTokenDataProvider extends Contract {
           userCooldownAmount: BigNumber;
         }
       ] & {
-        stkAaveData: [
+        stkPegasysData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2746,7 +2746,7 @@ export class StakedTokenDataProvider extends Contract {
           distributionPerSecond: BigNumber;
           distributionEnd: BigNumber;
         };
-        stkAaveUserData: [
+        stkPegasysUserData: [
           BigNumber,
           BigNumber,
           BigNumber,
@@ -2764,7 +2764,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    getStkBptAaveUserData(
+    getStkBptPegasysUserData(
       user: string,
       overrides?: CallOverrides
     ): Promise<
@@ -2838,7 +2838,7 @@ export class StakedTokenDataProvider extends Contract {
       }
     >;
 
-    "getStkBptAaveUserData(address)"(
+    "getStkBptPegasysUserData(address)"(
       user: string,
       overrides?: CallOverrides
     ): Promise<
@@ -2968,13 +2968,13 @@ export class StakedTokenDataProvider extends Contract {
   filters: {};
 
   estimateGas: {
-    AAVE(overrides?: CallOverrides): Promise<BigNumber>;
+    PSYS(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "AAVE()"(overrides?: CallOverrides): Promise<BigNumber>;
+    "PSYS()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    AAVE_PRICE_FEED(overrides?: CallOverrides): Promise<BigNumber>;
+    PSYS_PRICE_FEED(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "AAVE_PRICE_FEED()"(overrides?: CallOverrides): Promise<BigNumber>;
+    "PSYS_PRICE_FEED()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     BPT(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -2988,9 +2988,9 @@ export class StakedTokenDataProvider extends Contract {
 
     "ETH_USD_PRICE_FEED()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    STAKED_AAVE(overrides?: CallOverrides): Promise<BigNumber>;
+    STAKED_PSYS(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "STAKED_AAVE()"(overrides?: CallOverrides): Promise<BigNumber>;
+    "STAKED_PSYS()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     STAKED_BPT(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -3010,26 +3010,26 @@ export class StakedTokenDataProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    getStkAaveData(overrides?: CallOverrides): Promise<BigNumber>;
+    getStkPegasysData(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "getStkAaveData()"(overrides?: CallOverrides): Promise<BigNumber>;
+    "getStkPegasysData()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getStkAaveUserData(
+    getStkPegasysUserData(
       user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getStkAaveUserData(address)"(
+    "getStkPegasysUserData(address)"(
       user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    getStkBptAaveUserData(
+    getStkBptPegasysUserData(
       user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "getStkBptAaveUserData(address)"(
+    "getStkBptPegasysUserData(address)"(
       user: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -3040,13 +3040,13 @@ export class StakedTokenDataProvider extends Contract {
   };
 
   populateTransaction: {
-    AAVE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    PSYS(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "AAVE()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    "PSYS()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    AAVE_PRICE_FEED(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    PSYS_PRICE_FEED(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "AAVE_PRICE_FEED()"(
+    "PSYS_PRICE_FEED()"(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -3068,9 +3068,9 @@ export class StakedTokenDataProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    STAKED_AAVE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    STAKED_PSYS(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "STAKED_AAVE()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    "STAKED_PSYS()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     STAKED_BPT(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -3094,28 +3094,28 @@ export class StakedTokenDataProvider extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    getStkAaveData(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getStkPegasysData(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "getStkAaveData()"(
+    "getStkPegasysData()"(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    getStkAaveUserData(
+    getStkPegasysUserData(
       user: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getStkAaveUserData(address)"(
+    "getStkPegasysUserData(address)"(
       user: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    getStkBptAaveUserData(
+    getStkBptPegasysUserData(
       user: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "getStkBptAaveUserData(address)"(
+    "getStkBptPegasysUserData(address)"(
       user: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

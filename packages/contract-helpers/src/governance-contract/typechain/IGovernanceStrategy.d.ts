@@ -20,16 +20,16 @@ import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
 interface IGovernanceStrategyInterface extends ethers.utils.Interface {
   functions: {
-    'AAVE()': FunctionFragment;
-    'STK_AAVE()': FunctionFragment;
+    'PSYS()': FunctionFragment;
+    'STK_PSYS()': FunctionFragment;
     'getPropositionPowerAt(address,uint256)': FunctionFragment;
     'getTotalPropositionSupplyAt(uint256)': FunctionFragment;
     'getTotalVotingSupplyAt(uint256)': FunctionFragment;
     'getVotingPowerAt(address,uint256)': FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: 'AAVE', values?: undefined): string;
-  encodeFunctionData(functionFragment: 'STK_AAVE', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'PSYS', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'STK_PSYS', values?: undefined): string;
   encodeFunctionData(
     functionFragment: 'getPropositionPowerAt',
     values: [string, BigNumberish],
@@ -47,8 +47,8 @@ interface IGovernanceStrategyInterface extends ethers.utils.Interface {
     values: [string, BigNumberish],
   ): string;
 
-  decodeFunctionResult(functionFragment: 'AAVE', data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: 'STK_AAVE', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'PSYS', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'STK_PSYS', data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: 'getPropositionPowerAt',
     data: BytesLike,
@@ -83,19 +83,19 @@ export class IGovernanceStrategy extends Contract {
   interface: IGovernanceStrategyInterface;
 
   functions: {
-    AAVE(overrides?: CallOverrides): Promise<{
+    PSYS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    'AAVE()'(overrides?: CallOverrides): Promise<{
+    'PSYS()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    STK_AAVE(overrides?: CallOverrides): Promise<{
+    STK_PSYS(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
-    'STK_AAVE()'(overrides?: CallOverrides): Promise<{
+    'STK_PSYS()'(overrides?: CallOverrides): Promise<{
       0: string;
     }>;
 
@@ -160,13 +160,13 @@ export class IGovernanceStrategy extends Contract {
     }>;
   };
 
-  AAVE(overrides?: CallOverrides): Promise<string>;
+  PSYS(overrides?: CallOverrides): Promise<string>;
 
-  'AAVE()'(overrides?: CallOverrides): Promise<string>;
+  'PSYS()'(overrides?: CallOverrides): Promise<string>;
 
-  STK_AAVE(overrides?: CallOverrides): Promise<string>;
+  STK_PSYS(overrides?: CallOverrides): Promise<string>;
 
-  'STK_AAVE()'(overrides?: CallOverrides): Promise<string>;
+  'STK_PSYS()'(overrides?: CallOverrides): Promise<string>;
 
   getPropositionPowerAt(
     user: string,
@@ -213,13 +213,13 @@ export class IGovernanceStrategy extends Contract {
   ): Promise<BigNumber>;
 
   callStatic: {
-    AAVE(overrides?: CallOverrides): Promise<string>;
+    PSYS(overrides?: CallOverrides): Promise<string>;
 
-    'AAVE()'(overrides?: CallOverrides): Promise<string>;
+    'PSYS()'(overrides?: CallOverrides): Promise<string>;
 
-    STK_AAVE(overrides?: CallOverrides): Promise<string>;
+    STK_PSYS(overrides?: CallOverrides): Promise<string>;
 
-    'STK_AAVE()'(overrides?: CallOverrides): Promise<string>;
+    'STK_PSYS()'(overrides?: CallOverrides): Promise<string>;
 
     getPropositionPowerAt(
       user: string,
@@ -269,13 +269,13 @@ export class IGovernanceStrategy extends Contract {
   filters: {};
 
   estimateGas: {
-    AAVE(overrides?: CallOverrides): Promise<BigNumber>;
+    PSYS(overrides?: CallOverrides): Promise<BigNumber>;
 
-    'AAVE()'(overrides?: CallOverrides): Promise<BigNumber>;
+    'PSYS()'(overrides?: CallOverrides): Promise<BigNumber>;
 
-    STK_AAVE(overrides?: CallOverrides): Promise<BigNumber>;
+    STK_PSYS(overrides?: CallOverrides): Promise<BigNumber>;
 
-    'STK_AAVE()'(overrides?: CallOverrides): Promise<BigNumber>;
+    'STK_PSYS()'(overrides?: CallOverrides): Promise<BigNumber>;
 
     getPropositionPowerAt(
       user: string,
@@ -323,13 +323,13 @@ export class IGovernanceStrategy extends Contract {
   };
 
   populateTransaction: {
-    AAVE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    PSYS(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    'AAVE()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'PSYS()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    STK_AAVE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    STK_PSYS(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    'STK_AAVE()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    'STK_PSYS()'(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getPropositionPowerAt(
       user: string,

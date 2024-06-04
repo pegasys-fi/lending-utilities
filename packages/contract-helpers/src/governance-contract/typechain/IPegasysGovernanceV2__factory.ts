@@ -4,14 +4,14 @@
 import { Contract, Signer } from 'ethers';
 import { Provider } from '@ethersproject/providers';
 
-import type { IAaveGovernanceV2 } from './IAaveGovernanceV2';
+import type { IPegasysGovernanceV2 } from './IPegasysGovernanceV2';
 
-export class IAaveGovernanceV2__factory {
+export class IPegasysGovernanceV2__factory {
   static connect(
     address: string,
     signerOrProvider: Signer | Provider,
-  ): IAaveGovernanceV2 {
-    return new Contract(address, _abi, signerOrProvider) as IAaveGovernanceV2;
+  ): IPegasysGovernanceV2 {
+    return new Contract(address, _abi, signerOrProvider) as IPegasysGovernanceV2;
   }
 }
 
@@ -466,7 +466,7 @@ const _abi = [
             type: 'bytes32',
           },
         ],
-        internalType: 'struct IAaveGovernanceV2.ProposalWithoutVotes',
+        internalType: 'struct IPegasysGovernanceV2.ProposalWithoutVotes',
         name: '',
         type: 'tuple',
       },
@@ -485,7 +485,7 @@ const _abi = [
     name: 'getProposalState',
     outputs: [
       {
-        internalType: 'enum IAaveGovernanceV2.ProposalState',
+        internalType: 'enum IPegasysGovernanceV2.ProposalState',
         name: '',
         type: 'uint8',
       },
@@ -534,7 +534,7 @@ const _abi = [
             type: 'uint248',
           },
         ],
-        internalType: 'struct IAaveGovernanceV2.Vote',
+        internalType: 'struct IPegasysGovernanceV2.Vote',
         name: '',
         type: 'tuple',
       },

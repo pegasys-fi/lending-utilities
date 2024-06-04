@@ -39,7 +39,7 @@ export declare namespace DistributionTypes {
   };
 }
 
-export interface StakedAaveV3Interface extends utils.Interface {
+export interface StakedPegasysV3Interface extends utils.Interface {
   functions: {
     'CLAIM_HELPER_ROLE()': FunctionFragment;
     'COOLDOWN_ADMIN_ROLE()': FunctionFragment;
@@ -1041,12 +1041,12 @@ export type UserIndexUpdatedEvent = TypedEvent<
 export type UserIndexUpdatedEventFilter =
   TypedEventFilter<UserIndexUpdatedEvent>;
 
-export interface StakedAaveV3 extends BaseContract {
+export interface StakedPegasysV3 extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: StakedAaveV3Interface;
+  interface: StakedPegasysV3Interface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,

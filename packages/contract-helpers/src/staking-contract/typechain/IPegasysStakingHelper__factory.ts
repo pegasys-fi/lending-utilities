@@ -4,14 +4,14 @@
 import { Contract, Signer } from 'ethers';
 import { Provider } from '@ethersproject/providers';
 
-import type { IAaveStakingHelper } from './IAaveStakingHelper';
+import type { IPegasysStakingHelper } from './IPegasysStakingHelper';
 
-export class IAaveStakingHelper__factory {
+export class IPegasysStakingHelper__factory {
   static connect(
     address: string,
     signerOrProvider: Signer | Provider,
-  ): IAaveStakingHelper {
-    return new Contract(address, _abi, signerOrProvider) as IAaveStakingHelper;
+  ): IPegasysStakingHelper {
+    return new Contract(address, _abi, signerOrProvider) as IPegasysStakingHelper;
   }
 }
 

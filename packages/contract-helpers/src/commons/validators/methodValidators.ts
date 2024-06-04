@@ -292,11 +292,11 @@ export function UiIncentiveDataProviderValidator(
 // ): any {
 //   const method = descriptor.value;
 //   descriptor.value = function () {
-//     const LEND_TO_AAVE_MIGRATOR =
+//     const LEND_TO_PSYS_MIGRATOR =
 //       // @ts-expect-error todo: check why this ignore is needed
-//       this.migratorConfig?.LEND_TO_AAVE_MIGRATOR || '';
+//       this.migratorConfig?.LEND_TO_PSYS_MIGRATOR || '';
 
-//     if (!utils.isAddress(LEND_TO_AAVE_MIGRATOR)) {
+//     if (!utils.isAddress(LEND_TO_PSYS_MIGRATOR)) {
 //       console.error(`[MigratorValidator] You need to pass valid addresses`);
 //       return [];
 //     }
@@ -551,9 +551,9 @@ export function GovHelperValidator(
   descriptor.value = function () {
     if (
       // @ts-expect-error todo: check why this ignore is needed
-      !utils.isAddress(this.aaveGovernanceV2Address) ||
+      !utils.isAddress(this.pegasysGovernanceV2Address) ||
       // @ts-expect-error todo: check why this ignore is needed
-      !utils.isAddress(this.aaveGovernanceV2HelperAddress)
+      !utils.isAddress(this.pegasysGovernanceV2HelperAddress)
     ) {
       console.error(`[GovernanceValidator] You need to pass valid addresses`);
       return [];
@@ -578,7 +578,7 @@ export function GovValidator(
   descriptor.value = function () {
     if (
       // @ts-expect-error todo: check why this ignore is needed
-      !utils.isAddress(this.aaveGovernanceV2Address)
+      !utils.isAddress(this.pegasysGovernanceV2Address)
     ) {
       console.error(`[GovernanceValidator] You need to pass valid addresses`);
       return [];

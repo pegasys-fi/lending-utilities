@@ -84,7 +84,7 @@ export type ConstantAddressesByNetwork = Record<
 >;
 
 export type MigratorConfig = {
-  LEND_TO_AAVE_MIGRATOR: tEthereumAddress;
+  LEND_TO_PSYS_MIGRATOR: tEthereumAddress;
 };
 
 export type LendingPoolMarketConfig = {
@@ -106,7 +106,7 @@ export enum eEthereumTxType {
   GOVERNANCE_ACTION = 'GOVERNANCE_ACTION',
   GOV_DELEGATION_ACTION = 'GOV_DELEGATION_ACTION',
   STAKE_ACTION = 'STAKE_ACTION',
-  MIGRATION_LEND_AAVE = 'MIGRATION_LEND_AAVE',
+  MIGRATION_LEND_PSYS = 'MIGRATION_LEND_PSYS',
   FAUCET_MINT = 'FAUCET_MINT',
   REWARD_ACTION = 'REWARD_ACTION',
   V3_MIGRATION_ACTION = 'V3_MIGRATION_ACTION',
@@ -157,7 +157,7 @@ export enum GovernanceVote {
 }
 
 export enum Stake {
-  aave = 'aave',
+  pegasys = 'pegasys',
   bpt = 'bpt',
   gho = 'gho',
   bptv2 = 'bptv2',
@@ -196,15 +196,15 @@ export type AddressModel = {
   LENDINGPOOL_CORE_ADDRESS: tEthereumAddress;
   SYNTHETIX_PROXY_ADDRESS: tEthereumAddress;
   GOVERNANCE_PROTO_CONTRACT: tEthereumAddress;
-  LEND_TO_AAVE_MIGRATOR: tEthereumAddress;
+  LEND_TO_PSYS_MIGRATOR: tEthereumAddress;
   WETH_GATEWAY: tEthereumAddress;
   FAUCET: tEthereumAddress;
   SWAP_COLLATERAL_ADAPTER: tEthereumAddress;
   REPAY_WITH_COLLATERAL_ADAPTER: tEthereumAddress;
-  AAVE_GOVERNANCE_V2: tEthereumAddress;
-  AAVE_GOVERNANCE_V2_EXECUTOR_SHORT: tEthereumAddress;
-  AAVE_GOVERNANCE_V2_EXECUTOR_LONG: tEthereumAddress;
-  AAVE_GOVERNANCE_V2_HELPER: tEthereumAddress;
+  PSYS_GOVERNANCE_V2: tEthereumAddress;
+  PSYS_GOVERNANCE_V2_EXECUTOR_SHORT: tEthereumAddress;
+  PSYS_GOVERNANCE_V2_EXECUTOR_LONG: tEthereumAddress;
+  PSYS_GOVERNANCE_V2_HELPER: tEthereumAddress;
   FLASHLIQUIDATION: tEthereumAddress;
   INCENTIVES_CONTROLLER: tEthereumAddress;
   INCENTIVES_CONTROLLER_REWARD_TOKEN: tEthereumAddress;
@@ -214,7 +214,7 @@ export type tCommonContractAddressBetweenMarkets = Pick<
   AddressModel,
   | 'SYNTHETIX_PROXY_ADDRESS'
   | 'GOVERNANCE_PROTO_CONTRACT'
-  | 'LEND_TO_AAVE_MIGRATOR'
+  | 'LEND_TO_PSYS_MIGRATOR'
   | 'WETH_GATEWAY'
   | 'FAUCET'
   | 'SWAP_COLLATERAL_ADAPTER'
@@ -238,10 +238,10 @@ export type tDistinctContractAddressBetweenMarketsV2 = Pick<
 
 export type tDistinctGovernanceV2Addresses = Pick<
   AddressModel,
-  | 'AAVE_GOVERNANCE_V2'
-  | 'AAVE_GOVERNANCE_V2_EXECUTOR_SHORT'
-  | 'AAVE_GOVERNANCE_V2_EXECUTOR_LONG'
-  | 'AAVE_GOVERNANCE_V2_HELPER'
+  | 'PSYS_GOVERNANCE_V2'
+  | 'PSYS_GOVERNANCE_V2_EXECUTOR_SHORT'
+  | 'PSYS_GOVERNANCE_V2_EXECUTOR_LONG'
+  | 'PSYS_GOVERNANCE_V2_HELPER'
 >;
 
 export type tdistinctStakingAddressesBetweenTokens = {

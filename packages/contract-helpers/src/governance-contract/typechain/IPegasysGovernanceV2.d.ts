@@ -20,7 +20,7 @@ import { BytesLike } from '@ethersproject/bytes';
 import { Listener, Provider } from '@ethersproject/providers';
 import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
-interface IAaveGovernanceV2Interface extends ethers.utils.Interface {
+interface IPegasysGovernanceV2Interface extends ethers.utils.Interface {
   functions: {
     '__abdicate()': FunctionFragment;
     'authorizeExecutors(address[])': FunctionFragment;
@@ -207,7 +207,7 @@ interface IAaveGovernanceV2Interface extends ethers.utils.Interface {
   getEvent(nameOrSignatureOrTopic: 'VotingDelayChanged'): EventFragment;
 }
 
-export class IAaveGovernanceV2 extends Contract {
+export class IPegasysGovernanceV2 extends Contract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -218,7 +218,7 @@ export class IAaveGovernanceV2 extends Contract {
   removeAllListeners(eventName: EventFilter | string): this;
   removeListener(eventName: any, listener: Listener): this;
 
-  interface: IAaveGovernanceV2Interface;
+  interface: IPegasysGovernanceV2Interface;
 
   functions: {
     __abdicate(overrides?: Overrides): Promise<ContractTransaction>;

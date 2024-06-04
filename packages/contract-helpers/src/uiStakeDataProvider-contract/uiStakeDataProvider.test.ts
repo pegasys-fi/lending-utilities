@@ -44,7 +44,7 @@ describe('UiStakeDataProvider', () => {
     });
     it('Expects to get user raw data', async () => {
       const rawData = await instance.getUserStakeUIData({ user });
-      expect(rawData.stkAaveData.stakedTokenUserBalance).toEqual(
+      expect(rawData.stkPegasysData.stakedTokenUserBalance).toEqual(
         BigNumber.from(0),
       );
     });

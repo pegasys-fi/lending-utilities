@@ -869,7 +869,7 @@ describe('validators', () => {
   describe('isEthAddressOrEnsValidator', () => {
     it('should not throw for valid ens with isParaOptional omitted', () => {
       const methodArguments = {
-        '0': 'aave.eth',
+        '0': 'pegasys.eth',
       };
       const existingPossibleAddresses = [
         {
@@ -891,7 +891,7 @@ describe('validators', () => {
     });
     it('should not throw for valid ens with isParaOptional truthy', () => {
       const methodArguments = {
-        '0': 'aave.eth',
+        '0': 'pegasys.eth',
       };
       const existingPossibleAddresses = [
         {
@@ -915,7 +915,7 @@ describe('validators', () => {
     });
     it('should not throw for valid ens with isParaOptional falsy', () => {
       const methodArguments = {
-        '0': 'aave.eth',
+        '0': 'pegasys.eth',
       };
       const existingPossibleAddresses = [
         {
@@ -939,7 +939,7 @@ describe('validators', () => {
     });
     it('should throw for invalid address', () => {
       const methodArguments = {
-        '0': 'aave',
+        '0': 'pegasys',
       };
       const existingPossibleAddresses = [
         {

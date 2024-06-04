@@ -20,7 +20,7 @@ import { BytesLike } from "@ethersproject/bytes";
 import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 
-interface IAaveIncentivesControllerInterface extends ethers.utils.Interface {
+interface IPegasysIncentivesControllerInterface extends ethers.utils.Interface {
   functions: {
     "claimRewards(address[],uint256,address)": FunctionFragment;
   };
@@ -38,7 +38,7 @@ interface IAaveIncentivesControllerInterface extends ethers.utils.Interface {
   events: {};
 }
 
-export class IAaveIncentivesController extends Contract {
+export class IPegasysIncentivesController extends Contract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -49,7 +49,7 @@ export class IAaveIncentivesController extends Contract {
   removeAllListeners(eventName: EventFilter | string): this;
   removeListener(eventName: any, listener: Listener): this;
 
-  interface: IAaveIncentivesControllerInterface;
+  interface: IPegasysIncentivesControllerInterface;
 
   functions: {
     claimRewards(

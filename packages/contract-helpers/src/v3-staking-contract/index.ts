@@ -21,8 +21,8 @@ import {
 import { ERC20_2612Interface, ERC20_2612Service } from '../erc20-2612';
 import { ERC20Service, IERC20ServiceInterface } from '../erc20-contract';
 
-import { Abi as IStakedAaveV3 } from './typechain/Abi';
-import { Abi__factory as IStakedAaveV3__factory } from './typechain/factories/Abi__factory';
+import { Abi as IStakedPegasysV3 } from './typechain/Abi';
+import { Abi__factory as IStakedPegasysV3__factory } from './typechain/factories/Abi__factory';
 
 export interface StakingInterfaceV3 {
   stakingContractAddress: tEthereumAddress;
@@ -59,7 +59,7 @@ type StakingServiceConfig = {
 };
 
 export class StakingServiceV3
-  extends BaseService<IStakedAaveV3>
+  extends BaseService<IStakedPegasysV3>
   implements StakingInterfaceV3
 {
   public readonly stakingContractAddress: tEthereumAddress;
@@ -72,7 +72,7 @@ export class StakingServiceV3
     provider: providers.Provider,
     stakingServiceConfig: StakingServiceConfig,
   ) {
-    super(provider, IStakedAaveV3__factory);
+    super(provider, IStakedPegasysV3__factory);
 
     this.erc20Service = new ERC20Service(provider);
 
@@ -88,7 +88,7 @@ export class StakingServiceV3
     deadline: string,
   ): Promise<string> {
     const { getTokenData } = this.erc20Service;
-    const stakingContract: IStakedAaveV3 = this.getContractInstance(
+    const stakingContract: IStakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     // eslint-disable-next-line new-cap
@@ -150,7 +150,7 @@ export class StakingServiceV3
   ): Promise<EthereumTransactionTypeExtended[]> {
     const txs: EthereumTransactionTypeExtended[] = [];
     const { decimalsOf } = this.erc20Service;
-    const stakingContract: IStakedAaveV3 = this.getContractInstance(
+    const stakingContract: IStakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     // eslint-disable-next-line new-cap
@@ -194,7 +194,7 @@ export class StakingServiceV3
     const txs: EthereumTransactionTypeExtended[] = [];
 
     const { decimalsOf, isApproved, approve } = this.erc20Service;
-    const stakingContract: IStakedAaveV3 = this.getContractInstance(
+    const stakingContract: IStakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     // eslint-disable-next-line new-cap
@@ -247,7 +247,7 @@ export class StakingServiceV3
     @isPositiveOrMinusOneAmount() amount: string,
   ): Promise<EthereumTransactionTypeExtended[]> {
     let convertedAmount: string;
-    const stakingContract: IStakedAaveV3 = this.getContractInstance(
+    const stakingContract: IStakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     if (amount === '-1') {
@@ -281,7 +281,7 @@ export class StakingServiceV3
   public cooldown(
     @isEthAddress() user: tEthereumAddress,
   ): EthereumTransactionTypeExtended[] {
-    const stakingContract: IStakedAaveV3 = this.getContractInstance(
+    const stakingContract: IStakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
 
@@ -305,7 +305,7 @@ export class StakingServiceV3
     @isPositiveOrMinusOneAmount() amount: string,
   ): Promise<EthereumTransactionTypeExtended[]> {
     let convertedAmount: string;
-    const stakingContract: IStakedAaveV3 = this.getContractInstance(
+    const stakingContract: IStakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     if (amount === '-1') {

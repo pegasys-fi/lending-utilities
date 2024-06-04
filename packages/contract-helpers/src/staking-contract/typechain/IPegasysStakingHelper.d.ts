@@ -19,7 +19,7 @@ import { BytesLike } from '@ethersproject/bytes';
 import { Listener, Provider } from '@ethersproject/providers';
 import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 
-interface IAaveStakingHelperInterface extends ethers.utils.Interface {
+interface IPegasysStakingHelperInterface extends ethers.utils.Interface {
   functions: {
     'stake(address,uint256,uint8,bytes32,bytes32)': FunctionFragment;
   };
@@ -34,7 +34,7 @@ interface IAaveStakingHelperInterface extends ethers.utils.Interface {
   events: {};
 }
 
-export class IAaveStakingHelper extends Contract {
+export class IPegasysStakingHelper extends Contract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -45,7 +45,7 @@ export class IAaveStakingHelper extends Contract {
   removeAllListeners(eventName: EventFilter | string): this;
   removeListener(eventName: any, listener: Listener): this;
 
-  interface: IAaveStakingHelperInterface;
+  interface: IPegasysStakingHelperInterface;
 
   functions: {
     stake(

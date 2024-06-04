@@ -12,43 +12,43 @@ export class StakedTokenDataProvider__factory extends ContractFactory {
   }
 
   deploy(
-    aave: string,
-    stkAave: string,
+    pegasys: string,
+    stkPegasys: string,
     bpt: string,
     stkBpt: string,
     ethUsdPriceFeed: string,
-    aavePriceFeed: string,
+    pegasysPriceFeed: string,
     bptPriceFeed: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<StakedTokenDataProvider> {
     return super.deploy(
-      aave,
-      stkAave,
+      pegasys,
+      stkPegasys,
       bpt,
       stkBpt,
       ethUsdPriceFeed,
-      aavePriceFeed,
+      pegasysPriceFeed,
       bptPriceFeed,
       overrides || {}
     ) as Promise<StakedTokenDataProvider>;
   }
   getDeployTransaction(
-    aave: string,
-    stkAave: string,
+    pegasys: string,
+    stkPegasys: string,
     bpt: string,
     stkBpt: string,
     ethUsdPriceFeed: string,
-    aavePriceFeed: string,
+    pegasysPriceFeed: string,
     bptPriceFeed: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): TransactionRequest {
     return super.getDeployTransaction(
-      aave,
-      stkAave,
+      pegasys,
+      stkPegasys,
       bpt,
       stkBpt,
       ethUsdPriceFeed,
-      aavePriceFeed,
+      pegasysPriceFeed,
       bptPriceFeed,
       overrides || {}
     );
@@ -76,12 +76,12 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "aave",
+        name: "pegasys",
         type: "address",
       },
       {
         internalType: "address",
-        name: "stkAave",
+        name: "stkPegasys",
         type: "address",
       },
       {
@@ -101,7 +101,7 @@ const _abi = [
       },
       {
         internalType: "address",
-        name: "aavePriceFeed",
+        name: "pegasysPriceFeed",
         type: "address",
       },
       {
@@ -115,7 +115,7 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "AAVE",
+    name: "PSYS",
     outputs: [
       {
         internalType: "address",
@@ -128,7 +128,7 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "AAVE_PRICE_FEED",
+    name: "PSYS_PRICE_FEED",
     outputs: [
       {
         internalType: "address",
@@ -180,7 +180,7 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "STAKED_AAVE",
+    name: "STAKED_PSYS",
     outputs: [
       {
         internalType: "address",
@@ -257,7 +257,7 @@ const _abi = [
           },
         ],
         internalType: "struct IStakedTokenDataProvider.StakedTokenData",
-        name: "stkAaveData",
+        name: "stkPegasysData",
         type: "tuple",
       },
       {
@@ -380,7 +380,7 @@ const _abi = [
           },
         ],
         internalType: "struct IStakedTokenDataProvider.StakedTokenData",
-        name: "stkAaveData",
+        name: "stkPegasysData",
         type: "tuple",
       },
       {
@@ -417,7 +417,7 @@ const _abi = [
           },
         ],
         internalType: "struct IStakedTokenDataProvider.StakedTokenUserData",
-        name: "stkAaveUserData",
+        name: "stkPegasysUserData",
         type: "tuple",
       },
       {
@@ -520,7 +520,7 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "getStkAaveData",
+    name: "getStkPegasysData",
     outputs: [
       {
         components: [
@@ -571,7 +571,7 @@ const _abi = [
           },
         ],
         internalType: "struct IStakedTokenDataProvider.StakedTokenData",
-        name: "stkAaveData",
+        name: "stkPegasysData",
         type: "tuple",
       },
     ],
@@ -586,7 +586,7 @@ const _abi = [
         type: "address",
       },
     ],
-    name: "getStkAaveUserData",
+    name: "getStkPegasysUserData",
     outputs: [
       {
         components: [
@@ -637,7 +637,7 @@ const _abi = [
           },
         ],
         internalType: "struct IStakedTokenDataProvider.StakedTokenData",
-        name: "stkAaveData",
+        name: "stkPegasysData",
         type: "tuple",
       },
       {
@@ -674,7 +674,7 @@ const _abi = [
           },
         ],
         internalType: "struct IStakedTokenDataProvider.StakedTokenUserData",
-        name: "stkAaveUserData",
+        name: "stkPegasysUserData",
         type: "tuple",
       },
     ],
@@ -689,7 +689,7 @@ const _abi = [
         type: "address",
       },
     ],
-    name: "getStkBptAaveUserData",
+    name: "getStkBptPegasysUserData",
     outputs: [
       {
         components: [
