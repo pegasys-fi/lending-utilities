@@ -1,7 +1,7 @@
 import { BigNumber } from 'ethers';
 
 export const GeneralStakeUIDataRaw = {
-  stkAaveData: {
+  stkPegasysData: {
     stakedTokenTotalSupply: BigNumber.from({
       _hex: '0x0',
       _isBigNumber: true,
@@ -158,7 +158,7 @@ export const GeneralStakeUIDataRaw = {
 
 export const GetUserStakeUIDataRaw = {
   ...GeneralStakeUIDataRaw,
-  stkAaveUserData: {
+  stkPegasysUserData: {
     stakedTokenUserBalance: BigNumber.from({
       _hex: '0x0',
       _isBigNumber: true,
@@ -262,7 +262,7 @@ export const GetUserStakeUIDataRaw = {
 
 export const GetUserStakeTotalsRaw = {
   ...GeneralStakeUIDataRaw,
-  stkAaveUserData: {
+  stkPegasysUserData: {
     stakedTokenUserBalance: BigNumber.from({
       _hex: '0x0',
       _isBigNumber: true,
@@ -389,7 +389,7 @@ export const GetUserStakeTotalsRaw = {
 };
 
 export const GeneralStakeUIDataHumanized = {
-  aave: {
+  pegasys: {
     stakeTokenTotalSupply: '0',
     stakeTokenTotalRedeemableAmount: '0',
     stakeCooldownSeconds: 0,
@@ -415,7 +415,7 @@ export const GeneralStakeUIDataHumanized = {
 };
 
 export const GetUserStakeUIDataHumanized = {
-  aave: {
+  pegasys: {
     stakeTokenUserBalance: '0',
     underlyingTokenUserBalance: '0',
     stakeTokenRedeemableAmount: '0',

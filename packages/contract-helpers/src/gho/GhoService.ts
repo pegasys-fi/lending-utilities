@@ -46,10 +46,10 @@ export class GhoService implements IGhoService {
         ghoReserveData.ghoBaseVariableBorrowRate.toString(),
       ghoDiscountedPerToken: ghoReserveData.ghoDiscountedPerToken.toString(),
       ghoDiscountRate: ghoReserveData.ghoDiscountRate.toString(),
-      aaveFacilitatorBucketMaxCapacity:
-        ghoReserveData.aaveFacilitatorBucketMaxCapacity.toString(),
-      aaveFacilitatorBucketLevel:
-        ghoReserveData.aaveFacilitatorBucketLevel.toString(),
+      pegasysFacilitatorBucketMaxCapacity:
+        ghoReserveData.pegasysFacilitatorBucketMaxCapacity.toString(),
+      pegasysFacilitatorBucketLevel:
+        ghoReserveData.pegasysFacilitatorBucketLevel.toString(),
       ghoMinDebtTokenBalanceForDiscount:
         ghoReserveData.ghoMinDebtTokenBalanceForDiscount.toString(),
       ghoMinDiscountTokenBalanceForDiscount:

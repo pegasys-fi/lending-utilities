@@ -119,7 +119,7 @@ function getComputedReserveFields({
     : valueToBigNumber(totalDebt)
         .dividedBy(totalLiquidity.plus(reserve.unbacked))
         .toFixed();
-  // https://github.com/aave/protocol-v2/blob/baeb455fad42d3160d571bd8d3a795948b72dd85/contracts/protocol/lendingpool/LendingPoolConfigurator.sol#L284
+  // https://github.com/pegasys/protocol-v2/blob/baeb455fad42d3160d571bd8d3a795948b72dd85/contracts/protocol/lendingpool/LendingPoolConfigurator.sol#L284
   const reserveLiquidationBonus = normalize(
     valueToBigNumber(reserve.reserveLiquidationBonus).minus(
       10 ** LTV_PRECISION,

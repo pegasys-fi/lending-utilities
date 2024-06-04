@@ -3,7 +3,7 @@
 
 import { Contract, Signer, utils } from 'ethers';
 import type { Provider } from '@ethersproject/providers';
-import type { StakedAaveV3, StakedAaveV3Interface } from './IStakedAaveV3';
+import type { StakedPegasysV3, StakedPegasysV3Interface } from './IStakedPegasysV3';
 
 const _abi = [
   {
@@ -1088,15 +1088,15 @@ const _abi = [
   },
 ] as const;
 
-export class StakedAaveV3__factory {
+export class StakedPegasysV3__factory {
   static readonly abi = _abi;
-  static createInterface(): StakedAaveV3Interface {
-    return new utils.Interface(_abi) as StakedAaveV3Interface;
+  static createInterface(): StakedPegasysV3Interface {
+    return new utils.Interface(_abi) as StakedPegasysV3Interface;
   }
   static connect(
     address: string,
     signerOrProvider: Signer | Provider,
-  ): StakedAaveV3 {
-    return new Contract(address, _abi, signerOrProvider) as StakedAaveV3;
+  ): StakedPegasysV3 {
+    return new Contract(address, _abi, signerOrProvider) as StakedPegasysV3;
   }
 }

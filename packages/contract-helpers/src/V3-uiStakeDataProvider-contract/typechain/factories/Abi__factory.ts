@@ -9,7 +9,7 @@ const _abi = [
     inputs: [
       {
         internalType: 'address',
-        name: 'stkAave',
+        name: 'stkPegasys',
         type: 'address',
       },
       {
@@ -19,7 +19,7 @@ const _abi = [
       },
       {
         internalType: 'address',
-        name: 'aaveUsdPriceFeed',
+        name: 'pegasysUsdPriceFeed',
         type: 'address',
       },
     ],
@@ -28,7 +28,7 @@ const _abi = [
   },
   {
     inputs: [],
-    name: 'AAVE_USD_PRICE_FEED',
+    name: 'PSYS_USD_PRICE_FEED',
     outputs: [
       {
         internalType: 'address',
@@ -54,7 +54,7 @@ const _abi = [
   },
   {
     inputs: [],
-    name: 'STAKED_AAVE',
+    name: 'STAKED_PSYS',
     outputs: [
       {
         internalType: 'address',

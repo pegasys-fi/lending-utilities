@@ -20,9 +20,9 @@ import {
 } from '../commons/validators/paramValidators';
 import { ERC20_2612Interface, ERC20_2612Service } from '../erc20-2612';
 import { ERC20Service, IERC20ServiceInterface } from '../erc20-contract';
-import { AaveTokenV3Service } from '../governance-v3/aave-token-v3';
-import { StakedAaveV3 } from './typechain/IStakedAaveV3';
-import { StakedAaveV3__factory } from './typechain/IStakedAaveV3__factory';
+import { PegasysTokenV3Service } from '../governance-v3/pegasys-token-v3';
+import { StakedPegasysV3 } from './typechain/IStakedPegasysV3';
+import { StakedPegasysV3__factory } from './typechain/IStakedPegasysV3__factory';
 
 export interface StakingInterface {
   stakingContractAddress: tEthereumAddress;
@@ -63,7 +63,7 @@ type StakingServiceConfig = {
 };
 
 export class StakingService
-  extends BaseService<StakedAaveV3>
+  extends BaseService<StakedPegasysV3>
   implements StakingInterface
 {
   public readonly stakingContractAddress: tEthereumAddress;
@@ -76,7 +76,7 @@ export class StakingService
     provider: providers.Provider,
     stakingServiceConfig: StakingServiceConfig,
   ) {
-    super(provider, StakedAaveV3__factory);
+    super(provider, StakedPegasysV3__factory);
 
     this.erc20Service = new ERC20Service(provider);
 
@@ -92,7 +92,7 @@ export class StakingService
     deadline: string,
   ): Promise<string> {
     const { getTokenData } = this.erc20Service;
-    const stakingContract: StakedAaveV3 = this.getContractInstance(
+    const stakingContract: StakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     // eslint-disable-next-line new-cap
@@ -101,11 +101,11 @@ export class StakingService
     const convertedAmount: string = valueToWei(amount, decimals);
     const { chainId } = await this.provider.getNetwork();
 
-    const aaveTokenV3Service = new AaveTokenV3Service(
+    const pegasysTokenV3Service = new PegasysTokenV3Service(
       stakedToken,
       this.provider,
     );
-    const { name, version } = await aaveTokenV3Service.getEip712Domain();
+    const { name, version } = await pegasysTokenV3Service.getEip712Domain();
 
     const nonce = await this.erc20_2612Service.getNonce({
       token: stakedToken,
@@ -160,7 +160,7 @@ export class StakingService
   ): Promise<EthereumTransactionTypeExtended[]> {
     const txs: EthereumTransactionTypeExtended[] = [];
     const { decimalsOf } = this.erc20Service;
-    const stakingContract: StakedAaveV3 = this.getContractInstance(
+    const stakingContract: StakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     // eslint-disable-next-line new-cap
@@ -202,7 +202,7 @@ export class StakingService
   ): Promise<EthereumTransactionTypeExtended[]> {
     const txs: EthereumTransactionTypeExtended[] = [];
     const { decimalsOf, isApproved, approve } = this.erc20Service;
-    const stakingContract: StakedAaveV3 = this.getContractInstance(
+    const stakingContract: StakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     // eslint-disable-next-line new-cap
@@ -254,7 +254,7 @@ export class StakingService
     @isPositiveOrMinusOneAmount() amount: string,
   ): Promise<EthereumTransactionTypeExtended[]> {
     let convertedAmount: string;
-    const stakingContract: StakedAaveV3 = this.getContractInstance(
+    const stakingContract: StakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     if (amount === '-1') {
@@ -288,7 +288,7 @@ export class StakingService
   public cooldown(
     @isEthAddress() user: tEthereumAddress,
   ): EthereumTransactionTypeExtended[] {
-    const stakingContract: StakedAaveV3 = this.getContractInstance(
+    const stakingContract: StakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
 
@@ -312,7 +312,7 @@ export class StakingService
     @isPositiveOrMinusOneAmount() amount: string,
   ): Promise<EthereumTransactionTypeExtended[]> {
     let convertedAmount: string;
-    const stakingContract: StakedAaveV3 = this.getContractInstance(
+    const stakingContract: StakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     if (amount === '-1') {
@@ -352,7 +352,7 @@ export class StakingService
     @isPositiveOrMinusOneAmount() amount: string,
   ): Promise<EthereumTransactionTypeExtended[]> {
     let convertedAmount: string;
-    const stakingContract: StakedAaveV3 = this.getContractInstance(
+    const stakingContract: StakedPegasysV3 = this.getContractInstance(
       this.stakingContractAddress,
     );
     if (amount === '-1') {

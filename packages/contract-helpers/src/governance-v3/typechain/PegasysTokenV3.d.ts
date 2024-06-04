@@ -25,7 +25,7 @@ import type {
   OnEvent,
 } from './common';
 
-export interface AaveTokenV3Interface extends utils.Interface {
+export interface PegasysTokenV3Interface extends utils.Interface {
   functions: {
     'DELEGATE_BY_TYPE_TYPEHASH()': FunctionFragment;
     'DELEGATE_TYPEHASH()': FunctionFragment;
@@ -342,12 +342,12 @@ export type TransferEvent = TypedEvent<
 
 export type TransferEventFilter = TypedEventFilter<TransferEvent>;
 
-export interface AaveTokenV3 extends BaseContract {
+export interface PegasysTokenV3 extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: AaveTokenV3Interface;
+  interface: PegasysTokenV3Interface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,

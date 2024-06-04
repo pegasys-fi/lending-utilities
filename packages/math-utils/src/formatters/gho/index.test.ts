@@ -13,10 +13,10 @@ describe('formatGhoData', () => {
       ghoReserveData: ghoMock.ghoReserveData,
     });
 
-    expect(result.aaveFacilitatorBucketLevel).toEqual(10);
-    expect(result.aaveFacilitatorBucketMaxCapacity).toEqual(100);
-    expect(result.aaveFacilitatorRemainingCapacity).toEqual(90);
-    expect(result.aaveFacilitatorMintedPercent).toEqual(0.1);
+    expect(result.pegasysFacilitatorBucketLevel).toEqual(10);
+    expect(result.pegasysFacilitatorBucketMaxCapacity).toEqual(100);
+    expect(result.pegasysFacilitatorRemainingCapacity).toEqual(90);
+    expect(result.pegasysFacilitatorMintedPercent).toEqual(0.1);
     expect(result.ghoBaseVariableBorrowRate).toEqual(1); // 10%
     expect(result.ghoVariableBorrowAPY).toBeCloseTo(1.71828, 5); // 17.18%
     expect(result.ghoDiscountedPerToken).toEqual(100);

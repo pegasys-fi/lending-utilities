@@ -6,8 +6,8 @@ export interface GhoReserveData {
   ghoMinDiscountTokenBalanceForDiscount: string;
   ghoReserveLastUpdateTimestamp: string;
   ghoCurrentBorrowIndex: string;
-  aaveFacilitatorBucketLevel: string;
-  aaveFacilitatorBucketMaxCapacity: string;
+  pegasysFacilitatorBucketLevel: string;
+  pegasysFacilitatorBucketMaxCapacity: string;
 }
 
 export interface GhoUserData {

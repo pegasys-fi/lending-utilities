@@ -1,7 +1,7 @@
 import { BigNumber } from 'ethers';
 
 export type GeneralStakeUIData = {
-  stkAaveData: {
+  stkPegasysData: {
     stakedTokenTotalSupply: BigNumber;
     stakedTokenTotalRedeemableAmount: BigNumber;
     stakeCooldownSeconds: BigNumber;
@@ -27,7 +27,7 @@ export type GeneralStakeUIData = {
 };
 
 export type GetUserStakeUIData = {
-  stkAaveData: {
+  stkPegasysData: {
     stakedTokenUserBalance: BigNumber;
     underlyingTokenUserBalance: BigNumber;
     stakedTokenRedeemableAmount: BigNumber;
@@ -47,7 +47,7 @@ export type GetUserStakeUIData = {
 };
 
 export type GeneralStakeUIDataHumanized = {
-  aave: {
+  pegasys: {
     stakeTokenTotalSupply: string;
     stakeTokenTotalRedeemableAmount: string;
     stakeCooldownSeconds: number;
@@ -74,7 +74,7 @@ export type GeneralStakeUIDataHumanized = {
 };
 
 export type GetUserStakeUIDataHumanized = {
-  aave: {
+  pegasys: {
     stakeTokenUserBalance: string;
     underlyingTokenUserBalance: string;
     stakeTokenRedeemableAmount: string;

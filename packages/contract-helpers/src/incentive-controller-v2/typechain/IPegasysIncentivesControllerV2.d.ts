@@ -18,7 +18,7 @@ import { Listener, Provider } from '@ethersproject/providers';
 import { FunctionFragment, EventFragment, Result } from '@ethersproject/abi';
 import { TypedEventFilter, TypedEvent, TypedListener } from './commons';
 
-interface IAaveIncentivesControllerV2Interface extends ethers.utils.Interface {
+interface IPegasysIncentivesControllerV2Interface extends ethers.utils.Interface {
   functions: {
     'PRECISION()': FunctionFragment;
     'claimAllRewards(address[],address)': FunctionFragment;
@@ -313,7 +313,7 @@ export type UserIndexUpdatedEvent = TypedEvent<
   }
 >;
 
-export class IAaveIncentivesControllerV2 extends BaseContract {
+export class IPegasysIncentivesControllerV2 extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -354,7 +354,7 @@ export class IAaveIncentivesControllerV2 extends BaseContract {
     toBlock?: string | number | undefined,
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: IAaveIncentivesControllerV2Interface;
+  interface: IPegasysIncentivesControllerV2Interface;
 
   functions: {
     PRECISION(overrides?: CallOverrides): Promise<[number]>;

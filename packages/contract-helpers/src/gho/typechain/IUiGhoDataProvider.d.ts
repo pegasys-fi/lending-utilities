@@ -29,8 +29,8 @@ export declare namespace IUiGhoDataProvider {
     ghoMinDiscountTokenBalanceForDiscount: PromiseOrValue<BigNumberish>;
     ghoReserveLastUpdateTimestamp: PromiseOrValue<BigNumberish>;
     ghoCurrentBorrowIndex: PromiseOrValue<BigNumberish>;
-    aaveFacilitatorBucketLevel: PromiseOrValue<BigNumberish>;
-    aaveFacilitatorBucketMaxCapacity: PromiseOrValue<BigNumberish>;
+    pegasysFacilitatorBucketLevel: PromiseOrValue<BigNumberish>;
+    pegasysFacilitatorBucketMaxCapacity: PromiseOrValue<BigNumberish>;
   };
 
   export type GhoReserveDataStructOutput = [
@@ -51,8 +51,8 @@ export declare namespace IUiGhoDataProvider {
     ghoMinDiscountTokenBalanceForDiscount: BigNumber;
     ghoReserveLastUpdateTimestamp: number;
     ghoCurrentBorrowIndex: BigNumber;
-    aaveFacilitatorBucketLevel: BigNumber;
-    aaveFacilitatorBucketMaxCapacity: BigNumber;
+    pegasysFacilitatorBucketLevel: BigNumber;
+    pegasysFacilitatorBucketMaxCapacity: BigNumber;
   };
 
   export type GhoUserDataStruct = {

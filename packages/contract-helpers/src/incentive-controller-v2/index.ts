@@ -10,8 +10,8 @@ import {
   isEthAddress,
   isEthAddressArray,
 } from '../commons/validators/paramValidators';
-import { IAaveIncentivesControllerV2 } from './typechain/IAaveIncentivesControllerV2';
-import { IAaveIncentivesControllerV2__factory } from './typechain/IAaveIncentivesControllerV2__factory';
+import { IPegasysIncentivesControllerV2 } from './typechain/IPegasysIncentivesControllerV2';
+import { IPegasysIncentivesControllerV2__factory } from './typechain/IPegasysIncentivesControllerV2__factory';
 
 export type ClaimRewardsV2MethodType = {
   user: string;
@@ -38,11 +38,11 @@ export interface IncentivesControllerV2Interface {
 }
 
 export class IncentivesControllerV2
-  extends BaseService<IAaveIncentivesControllerV2>
+  extends BaseService<IPegasysIncentivesControllerV2>
   implements IncentivesControllerV2Interface
 {
   constructor(provider: providers.Provider) {
-    super(provider, IAaveIncentivesControllerV2__factory);
+    super(provider, IPegasysIncentivesControllerV2__factory);
   }
 
   @IncentivesValidator
@@ -60,7 +60,7 @@ export class IncentivesControllerV2
       reward,
     }: ClaimRewardsV2MethodType,
   ): EthereumTransactionTypeExtended[] {
-    const incentivesContract: IAaveIncentivesControllerV2 =
+    const incentivesContract: IPegasysIncentivesControllerV2 =
       this.getContractInstance(incentivesControllerAddress);
     const txCallback: () => Promise<transactionType> = this.generateTxCallback({
       rawTxMethod: async () =>
@@ -95,7 +95,7 @@ export class IncentivesControllerV2
       incentivesControllerAddress,
     }: ClaimAllRewardsV2MethodType,
   ): EthereumTransactionTypeExtended[] {
-    const incentivesContract: IAaveIncentivesControllerV2 =
+    const incentivesContract: IPegasysIncentivesControllerV2 =
       this.getContractInstance(incentivesControllerAddress);
     const txCallback: () => Promise<transactionType> = this.generateTxCallback({
       rawTxMethod: async () =>

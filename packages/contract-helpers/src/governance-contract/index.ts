@@ -16,8 +16,8 @@ import {
   isEthAddress,
   isEthAddressArray,
 } from '../commons/validators/paramValidators';
-import { IAaveGovernanceV2 } from './typechain/IAaveGovernanceV2';
-import { IAaveGovernanceV2__factory } from './typechain/IAaveGovernanceV2__factory';
+import { IPegasysGovernanceV2 } from './typechain/IPegasysGovernanceV2';
+import { IPegasysGovernanceV2__factory } from './typechain/IPegasysGovernanceV2__factory';
 import { IGovernanceStrategy } from './typechain/IGovernanceStrategy';
 import { IGovernanceStrategy__factory } from './typechain/IGovernanceStrategy__factory';
 import { IGovernanceV2Helper } from './typechain/IGovernanceV2Helper';
@@ -68,7 +68,7 @@ export const humanizeProposal = (rawProposal: ProposalRPC): Proposal => {
   };
 };
 
-export interface AaveGovernanceInterface {
+export interface PegasysGovernanceInterface {
   submitVote: (args: GovSubmitVoteType) => EthereumTransactionTypeExtended[];
   getProposal: (args: GovGetProposalType) => Promise<Proposal>;
   getProposals: (args: GovGetProposalsType) => Promise<Proposal[]>;
@@ -78,28 +78,28 @@ export interface AaveGovernanceInterface {
   getProposalsCount: () => Promise<number>;
 }
 
-type AaveGovernanceServiceConfig = {
+type PegasysGovernanceServiceConfig = {
   GOVERNANCE_ADDRESS: string;
   GOVERNANCE_HELPER_ADDRESS?: string;
   ipfsGateway?: string;
 };
 
-export class AaveGovernanceService
-  extends BaseService<IAaveGovernanceV2>
-  implements AaveGovernanceInterface
+export class PegasysGovernanceService
+  extends BaseService<IPegasysGovernanceV2>
+  implements PegasysGovernanceInterface
 {
-  readonly aaveGovernanceV2Address: string;
+  readonly pegasysGovernanceV2Address: string;
 
-  readonly aaveGovernanceV2HelperAddress: string;
+  readonly pegasysGovernanceV2HelperAddress: string;
 
   constructor(
     provider: providers.Provider,
-    config: AaveGovernanceServiceConfig,
+    config: PegasysGovernanceServiceConfig,
   ) {
-    super(provider, IAaveGovernanceV2__factory);
+    super(provider, IPegasysGovernanceV2__factory);
 
-    this.aaveGovernanceV2Address = config.GOVERNANCE_ADDRESS;
-    this.aaveGovernanceV2HelperAddress = config.GOVERNANCE_HELPER_ADDRESS ?? '';
+    this.pegasysGovernanceV2Address = config.GOVERNANCE_ADDRESS;
+    this.pegasysGovernanceV2HelperAddress = config.GOVERNANCE_HELPER_ADDRESS ?? '';
   }
 
   @GovValidator
@@ -109,8 +109,8 @@ export class AaveGovernanceService
     { user, proposalId, support }: GovSubmitVoteType,
   ): EthereumTransactionTypeExtended[] {
     const txs: EthereumTransactionTypeExtended[] = [];
-    const govContract: IAaveGovernanceV2 = this.getContractInstance(
-      this.aaveGovernanceV2Address,
+    const govContract: IPegasysGovernanceV2 = this.getContractInstance(
+      this.pegasysGovernanceV2Address,
     );
 
     const txCallback: () => Promise<transactionType> = this.generateTxCallback({
@@ -134,13 +134,13 @@ export class AaveGovernanceService
     limit,
   }: GovGetProposalsType): Promise<Proposal[]> {
     const helper: IGovernanceV2Helper = IGovernanceV2Helper__factory.connect(
-      this.aaveGovernanceV2HelperAddress,
+      this.pegasysGovernanceV2HelperAddress,
       this.provider,
     );
     const result = await helper.getProposals(
       skip.toString(),
       limit.toString(),
-      this.aaveGovernanceV2Address,
+      this.pegasysGovernanceV2Address,
     );
 
     return result.map(proposal => humanizeProposal(proposal));
@@ -152,12 +152,12 @@ export class AaveGovernanceService
     { proposalId }: GovGetProposalType,
   ) {
     const helper: IGovernanceV2Helper = IGovernanceV2Helper__factory.connect(
-      this.aaveGovernanceV2HelperAddress,
+      this.pegasysGovernanceV2HelperAddress,
       this.provider,
     );
     const result = await helper.getProposal(
       proposalId,
-      this.aaveGovernanceV2Address,
+      this.pegasysGovernanceV2Address,
     );
 
     return humanizeProposal(result);
@@ -184,7 +184,7 @@ export class AaveGovernanceService
     { user, tokens }: GovGetPower,
   ): Promise<Power[]> {
     const helper: IGovernanceV2Helper = IGovernanceV2Helper__factory.connect(
-      this.aaveGovernanceV2HelperAddress,
+      this.pegasysGovernanceV2HelperAddress,
       this.provider,
     );
 
@@ -197,16 +197,16 @@ export class AaveGovernanceService
     @is0OrPositiveAmount('proposalId')
     { proposalId, user }: GovGetVoteOnProposal,
   ): Promise<Vote> {
-    const govContract: IAaveGovernanceV2 = this.getContractInstance(
-      this.aaveGovernanceV2Address,
+    const govContract: IPegasysGovernanceV2 = this.getContractInstance(
+      this.pegasysGovernanceV2Address,
     );
     return govContract.getVoteOnProposal(proposalId, user);
   }
 
   @GovValidator
   public async getProposalsCount() {
-    const govContract: IAaveGovernanceV2 = this.getContractInstance(
-      this.aaveGovernanceV2Address,
+    const govContract: IPegasysGovernanceV2 = this.getContractInstance(
+      this.pegasysGovernanceV2Address,
     );
 
     return (await govContract.getProposalsCount()).toNumber();
@@ -219,7 +219,7 @@ export class AaveGovernanceService
     { user, tokens, data }: GovDelegateTokensBySig,
   ): Promise<EthereumTransactionTypeExtended[]> {
     const helper = IGovernanceV2Helper__factory.connect(
-      this.aaveGovernanceV2HelperAddress,
+      this.pegasysGovernanceV2HelperAddress,
       this.provider,
     );
 
@@ -244,7 +244,7 @@ export class AaveGovernanceService
     { user, tokens, data }: GovDelegateTokensByTypeBySig,
   ): Promise<EthereumTransactionTypeExtended[]> {
     const helper = IGovernanceV2Helper__factory.connect(
-      this.aaveGovernanceV2HelperAddress,
+      this.pegasysGovernanceV2HelperAddress,
       this.provider,
     );
 

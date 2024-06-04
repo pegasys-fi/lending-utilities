@@ -52,12 +52,12 @@ const _abi = [
           },
           {
             internalType: "uint256",
-            name: "aaveFacilitatorBucketLevel",
+            name: "pegasysFacilitatorBucketLevel",
             type: "uint256",
           },
           {
             internalType: "uint256",
-            name: "aaveFacilitatorBucketMaxCapacity",
+            name: "pegasysFacilitatorBucketMaxCapacity",
             type: "uint256",
           },
         ],

@@ -39,23 +39,23 @@ export class UiStakeDataProvider implements UiStakeDataProviderInterface {
     @isEthAddress('user') { user }: { user: string },
   ): Promise<GetUserStakeUIData> {
     const {
-      stkAaveData,
-      stkAaveUserData,
+      stkPegasysData,
+      stkPegasysUserData,
       stkBptData,
       stkBptUserData,
       ethPrice,
     } = await this._contract.getAllStakedTokenUserData(user);
 
     return {
-      stkAaveData: {
-        ...stkAaveData,
-        stakedTokenUserBalance: stkAaveUserData.stakedTokenUserBalance,
-        underlyingTokenUserBalance: stkAaveUserData.underlyingTokenUserBalance,
+      stkPegasysData: {
+        ...stkPegasysData,
+        stakedTokenUserBalance: stkPegasysUserData.stakedTokenUserBalance,
+        underlyingTokenUserBalance: stkPegasysUserData.underlyingTokenUserBalance,
         stakedTokenRedeemableAmount:
-          stkAaveUserData.stakedTokenRedeemableAmount,
-        userCooldownAmount: stkAaveUserData.userCooldownAmount,
-        userCooldownTimestamp: stkAaveUserData.userCooldownTimestamp,
-        rewardsToClaim: stkAaveUserData.rewardsToClaim,
+          stkPegasysUserData.stakedTokenRedeemableAmount,
+        userCooldownAmount: stkPegasysUserData.userCooldownAmount,
+        userCooldownTimestamp: stkPegasysUserData.userCooldownTimestamp,
+        rewardsToClaim: stkPegasysUserData.rewardsToClaim,
       },
       stkBptData: {
         ...stkBptData,
@@ -77,18 +77,18 @@ export class UiStakeDataProvider implements UiStakeDataProviderInterface {
     const contractResult = await this.getUserStakeUIData({ user });
 
     return {
-      aave: {
+      pegasys: {
         stakeTokenUserBalance:
-          contractResult.stkAaveData.stakedTokenUserBalance.toString(),
+          contractResult.stkPegasysData.stakedTokenUserBalance.toString(),
         underlyingTokenUserBalance:
-          contractResult.stkAaveData.underlyingTokenUserBalance.toString(),
+          contractResult.stkPegasysData.underlyingTokenUserBalance.toString(),
         stakeTokenRedeemableAmount:
-          contractResult.stkAaveData.stakedTokenRedeemableAmount.toString(),
+          contractResult.stkPegasysData.stakedTokenRedeemableAmount.toString(),
         userCooldownAmount:
-          contractResult.stkAaveData.userCooldownAmount.toString(),
-        userCooldownTimestamp: contractResult.stkAaveData.userCooldownTimestamp,
+          contractResult.stkPegasysData.userCooldownAmount.toString(),
+        userCooldownTimestamp: contractResult.stkPegasysData.userCooldownTimestamp,
         userIncentivesToClaim:
-          contractResult.stkAaveData.rewardsToClaim.toString(),
+          contractResult.stkPegasysData.rewardsToClaim.toString(),
       },
       bpt: {
         stakeTokenUserBalance:
@@ -108,11 +108,11 @@ export class UiStakeDataProvider implements UiStakeDataProviderInterface {
   }
 
   public async getGeneralStakeUIData(): Promise<GeneralStakeUIData> {
-    const { stkAaveData, stkBptData, ethPrice } =
+    const { stkPegasysData, stkBptData, ethPrice } =
       await this._contract.getAllStakedTokenData();
 
     return {
-      stkAaveData,
+      stkPegasysData,
       stkBptData,
       ethPrice,
     };
@@ -122,29 +122,29 @@ export class UiStakeDataProvider implements UiStakeDataProviderInterface {
     const contractResult = await this.getGeneralStakeUIData();
 
     return {
-      aave: {
+      pegasys: {
         stakeTokenTotalSupply:
-          contractResult.stkAaveData.stakedTokenTotalSupply.toString(),
+          contractResult.stkPegasysData.stakedTokenTotalSupply.toString(),
         stakeTokenTotalRedeemableAmount:
-          contractResult.stkAaveData.stakedTokenTotalRedeemableAmount.toString(),
+          contractResult.stkPegasysData.stakedTokenTotalRedeemableAmount.toString(),
         stakeCooldownSeconds:
-          contractResult.stkAaveData.stakeCooldownSeconds.toNumber(),
+          contractResult.stkPegasysData.stakeCooldownSeconds.toNumber(),
         stakeUnstakeWindow:
-          contractResult.stkAaveData.stakeUnstakeWindow.toNumber(),
+          contractResult.stkPegasysData.stakeUnstakeWindow.toNumber(),
         stakeTokenPriceEth:
-          contractResult.stkAaveData.stakedTokenPriceEth.toString(),
+          contractResult.stkPegasysData.stakedTokenPriceEth.toString(),
         rewardTokenPriceEth:
-          contractResult.stkAaveData.rewardTokenPriceEth.toString(),
-        stakeApy: contractResult.stkAaveData.stakeApy.toString(),
+          contractResult.stkPegasysData.rewardTokenPriceEth.toString(),
+        stakeApy: contractResult.stkPegasysData.stakeApy.toString(),
         distributionPerSecond:
-          contractResult.stkAaveData.distributionPerSecond.toString(),
-        distributionEnd: contractResult.stkAaveData.distributionEnd.toString(),
+          contractResult.stkPegasysData.distributionPerSecond.toString(),
+        distributionEnd: contractResult.stkPegasysData.distributionEnd.toString(),
       },
       bpt: {
         stakeTokenTotalSupply:
           contractResult.stkBptData.stakedTokenTotalSupply.toString(),
         stakeTokenTotalRedeemableAmount:
-          contractResult.stkAaveData.stakedTokenTotalRedeemableAmount.toString(),
+          contractResult.stkPegasysData.stakedTokenTotalRedeemableAmount.toString(),
         stakeCooldownSeconds:
           contractResult.stkBptData.stakeCooldownSeconds.toNumber(),
         stakeUnstakeWindow:

@@ -153,7 +153,7 @@ export const gasLimitRecommendations: GasRecommendationType = {
 };
 
 export const mintAmountsPerToken: Record<string, string> = {
-  AAVE: valueToWei('100', 18),
+  PSYS: valueToWei('100', 18),
   BAT: valueToWei('100000', 18),
   BUSD: valueToWei('10000', 18),
   DAI: valueToWei('10000', 18),
